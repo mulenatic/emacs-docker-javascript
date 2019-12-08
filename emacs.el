@@ -35,3 +35,11 @@
   (dap-ui-mode t))
 
 (use-package dap-java :after (lsp-java))
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-magit
+  :after treemacs magit
+    :ensure t)
