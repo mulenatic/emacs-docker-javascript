@@ -43,3 +43,5 @@
 (use-package treemacs-magit
   :after treemacs magit
     :ensure t)
+
+(global-set-key (kbd "C-c x") 'lsp-execute-code-action);
