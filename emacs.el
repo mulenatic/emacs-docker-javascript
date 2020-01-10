@@ -5,10 +5,11 @@
 
 (load-theme 'zenburn t)
 
-;;company
-(global-company-mode)
-
-(add-to-list 'company-backends '(company-shell company-shell-env company-irony))
+;; (setq helm-projectile-fuzzy-match nil)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(helm-projectile-on)
 
 ;; eliminate long "yes" or "no" prompts
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -21,20 +22,36 @@
 
 (use-package projectile :ensure t)
 (use-package yasnippet :ensure t)
-(use-package lsp-mode :ensure t)
 (use-package hydra :ensure t)
-(use-package company-lsp :ensure t)
-(use-package lsp-ui :ensure t)
-(use-package lsp-java :ensure t :after lsp
-  :config (add-hook 'java-mode-hook 'lsp))
+;;(use-package js2-mode :ensure t)
 
-(use-package dap-mode
-  :ensure t :after lsp-mode
-  :config
-  (dap-mode t)
-  (dap-ui-mode t))
+(use-package lsp-mode
+  :hook (js-mode . lsp)
+  :hook (php-mode . lsp)
+  :hook (css-mode . lsp)
+  :hook (web-mode . lsp)
+  :commands lsp)
 
-(use-package dap-java :after (lsp-java))
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+(add-hook 'js-mode-hook 'flycheck-mode)
+(use-package company-lsp :commands company-lsp)
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+(setq lsp-language-id-configuration '((css-mode . "css")
+				      (xml-mode . "xml")
+				      (web-mode . "html")
+				      (html-mode . "html")
+				      (sgml-mode . "html")
+				      (mhtml-mode . "html")
+				      (php-mode . "php")
+				      (json-mode . "json")
+				      (js-mode . "javascript")
+				      ;;(typescript-mode . "typescript")
+				      ))
+
 
 (use-package treemacs-projectile
   :after treemacs projectile
@@ -42,6 +59,6 @@
 
 (use-package treemacs-magit
   :after treemacs magit
-    :ensure t)
+  :ensure t)
 
 (global-set-key (kbd "C-c x") 'lsp-execute-code-action);
