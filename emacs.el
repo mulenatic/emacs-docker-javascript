@@ -49,6 +49,7 @@
 				      (php-mode . "php")
 				      (json-mode . "json")
 				      (js-mode . "javascript")
+				      (js-jsx-mode . "javascript")
 				      ;;(typescript-mode . "typescript")
 				      ))
 
