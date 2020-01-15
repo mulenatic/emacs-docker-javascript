@@ -63,3 +63,7 @@
   :ensure t)
 
 (global-set-key (kbd "C-c x") 'lsp-execute-code-action);
+
+;;(yas-reload-all)
+;;(add-hook 'js-mode-hook #'yas-minor-mode)
+(yas-global-mode 1)
