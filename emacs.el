@@ -36,6 +36,7 @@
 (use-package lsp-ui :commands lsp-ui-mode)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'js-mode-hook 'flycheck-mode)
+(add-hook 'js-jsx-mode-hook 'flycheck-mode)
 (use-package company-lsp :commands company-lsp)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
@@ -67,3 +68,7 @@
 ;;(yas-reload-all)
 ;;(add-hook 'js-mode-hook #'yas-minor-mode)
 (yas-global-mode 1)
+
+(setq lsp-prefer-flymake nil)
+
+
