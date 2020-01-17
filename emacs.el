@@ -1,24 +1,3 @@
-(message "==== Reading configuration from .emacs.el ===")
-
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-
-(load-theme 'zenburn t)
-
-;; (setq helm-projectile-fuzzy-match nil)
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(helm-projectile-on)
-
-;; eliminate long "yes" or "no" prompts
-(fset 'yes-or-no-p 'y-or-n-p)
-;; Cusom mod configurations
-;; turn of the menu bar
-(menu-bar-mode -1)
-;; turn of the tool bar
-(if window-system
-    (tool-bar-mode -1) )
 
 (use-package projectile :ensure t)
 (use-package yasnippet :ensure t)
