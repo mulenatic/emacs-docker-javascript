@@ -50,4 +50,8 @@
 
 (setq lsp-prefer-flymake nil)
 
+;; Use web-mode for Javascript development
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)) ;; auto-enable for .js/.jsx files
 
+(when (fboundp 'winner-mode)
+        (winner-mode 1))
