@@ -66,6 +66,9 @@
 (setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint)))
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
+;; Workaround from https://github.com/flycheck/flycheck/issues/1129#issuecomment-319600923
+(with-eval-after-load 'flycheck
+  (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t)))
 
 
 ;; adjust indents for web-mode to 2 spaces
