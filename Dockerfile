@@ -1,5 +1,5 @@
 # Use the newest emacs version from silex as base
-FROM mulenatic/emacs-docker:v2.3.1
+FROM mulenatic/emacs-docker:v2.4.0
 RUN curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -; sudo apt-get update; sudo apt-get install -y unzip nodejs; sudo npm i -g typescript-language-server; sudo npm i -g typescript eslint eslint-loader eslint-plugin-react eslint-plugin-smarter-tabs; sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;
 USER docker
 COPY ["emacs.el", "/home/docker/emacs-addons.el"]
