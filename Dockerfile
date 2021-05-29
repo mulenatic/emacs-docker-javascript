@@ -3,7 +3,7 @@ FROM mulenatic/emacs-docker:v2.4.2
 RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -; sudo apt-get update; sudo apt-get install -y unzip nodejs; sudo npm i -g typescript-language-server; sudo npm i -g typescript eslint eslint-loader eslint-plugin-react eslint-plugin-smarter-tabs; sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;
 USER docker
 COPY ["emacs.el", "/home/docker/emacs-addons.el"]
-COPY ["generateGpgKey.sh", "setupPass.sh", "/home/docker"]
+COPY ["generateGpgKey.sh", "setupPass.sh", "/home/docker/"]
 RUN cat /home/docker/emacs-addons.el >> /home/docker/.emacs.el
 RUN echo '\n(depends-on "yasnippet")\n(depends-on "lsp-mode")\n(depends-on "dap-mode")\n(depends-on "hydra")\n(depends-on "company-lsp")\n(depends-on "lsp-ui")\n(depends-on "helm-lsp")\n(depends-on "lsp-treemacs")\n(depends-on "treemacs-projectile")\n(depends-on "treemacs-magit")\n(depends-on "restclient")\n(depends-on "company-restclient")\n(depends-on "react-snippets")\n(depends-on "graphql-mode")' >> /home/docker/.emacs.d/Cask; \
 	cd /home/docker/.emacs.d/; cask install; \
