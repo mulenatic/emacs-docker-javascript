@@ -80,7 +80,7 @@
   (setq web-mode-code-indent-offset 2))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (setq-default indent-tabs-mode nil)
-(setq +format-with-lsp nil)
+(setq lsp-enable-indentation nil)
 
 (require 'dap-node)
 
