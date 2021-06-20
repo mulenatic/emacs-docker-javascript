@@ -77,7 +77,8 @@
   ;;; http://web-mode.org/
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-code-indent-offset 2)
+  (setq-hook! 'web-mode-hook +format-with-lsp nil))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (setq-default indent-tabs-mode nil)
 (setq lsp-enable-indentation nil)
